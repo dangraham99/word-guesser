@@ -54,17 +54,26 @@ function GameScreen() {
 
 
         if (currentPos.character >= 5) {
+
+            const guess = boardLayout[currentPos.guess].join("")
+            console.log(guess)
+
             setCurrentPos({
                 character: 0,
                 guess: currentPos.guess + 1
             })
+
         } else (
             alert("You must complete your current guess!")
         )
 
         if (currentPos.guess >= 5) {
             setGameStateOver(true)
+            return
         }
+
+
+        return
 
     }
 
@@ -96,7 +105,13 @@ function GameScreen() {
         if (gameStateOver) {
             alert("You have finished the game")
         }
+
+
+
     }, [currentPos.guess])
+
+
+
 
 
 
