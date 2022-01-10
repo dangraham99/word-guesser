@@ -13,12 +13,9 @@ function Keyboard(props) {
 
     function handleInput(keyboardKey) {
 
-
-
         let validKey = false
 
         keyboardKey = keyboardKey.toUpperCase()
-        console.log(keyboardKey)
 
         //check to see if the key is any of the control keys that we have seperate functions for (if user pressed their keyboard)
         if (keyboardKey === "BACKSPACE" || keyboardKey === "DELETE") {
