@@ -12,12 +12,10 @@ function KeyboardTile({ children, className, optionKey, val, ...rest }) {
         keyVal = val
     }
 
-    function handleClick() {
-        alert(keyVal)
-    }
+
 
     return (
-        <button onClick={handleClick} {...rest} className={className + " bg-neutral-500 font-bold text-sm rounded-sm " + (optionKey ? "w-14 h-12" : "w-11 h-12")}>
+        <button tabIndex="-1" {...rest} className={className + " bg-neutral-500 font-bold text-sm rounded-sm " + (optionKey ? "w-14 h-12" : "w-11 h-12")}>
             {children}
         </button>
     )
