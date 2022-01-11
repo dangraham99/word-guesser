@@ -4,7 +4,7 @@ import BoardRow from './partials/BoardRow'
 function Board(props) {
     return (
 
-        <div id="board" className="grid grid-rows-6 mx-16 gap-1">
+        <div id="board" className="grid grid-rows-6 gap-1 select-none">
             <BoardRow guess={props.layout[0]} />
             <BoardRow guess={props.layout[1]} />
             <BoardRow guess={props.layout[2]} />
