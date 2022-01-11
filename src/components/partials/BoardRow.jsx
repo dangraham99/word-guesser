@@ -1,21 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LetterTile from './LetterTile'
 
+
 function BoardRow(props) {
+
+    const [activeRow, setActiveRow] = useState(false)
 
 
 
     return (
-        <div className="grid grid-cols-5 gap-1">
-            <LetterTile>{props.guess[0]}</LetterTile>
-            <LetterTile>{props.guess[1]}</LetterTile>
-            <LetterTile>{props.guess[2]}</LetterTile>
-            <LetterTile>{props.guess[3]}</LetterTile>
-            <LetterTile>{props.guess[4]}</LetterTile>
 
-
+        <div className="flex justify-center min-w-full space-x-1">
+            {
+                props.guess.map((letterObject, index) => {
+                    return <LetterTile status={letterObject.status} key={index}>{letterObject.val}</LetterTile>
+                })
+            }
         </div>
+
+
     )
+
 }
 
 export default BoardRow
