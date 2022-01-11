@@ -14,7 +14,12 @@ module.exports = {
       lineHeight: {
 
         '15': '3.75rem',
-      }
+      },
+      colors: {
+        'tile-correct-green': '#538d4e',
+        'tile-exists-yellow': '#b59f3b',
+      },
+
     }
   },
   plugins: [],
