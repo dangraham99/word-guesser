@@ -50,7 +50,7 @@ function GameScreen() {
 
 
     const date = new Date()
-    const seed = (date.getDate() + 1) + "-" + date.getMonth() + "-" + date.getFullYear()
+    const seed = (date.getDate() + 4) + "-" + date.getMonth() + "-" + date.getFullYear()
     const psuedorand = seedrandom(seed.toString())
     const randNum = Math.round(psuedorand() * wordList.length)
 
@@ -97,6 +97,12 @@ function GameScreen() {
     useEffect(() => {
         flashLocalStorage()
     }, [currentPos.guess])
+
+
+    //debug
+    useEffect(() => {
+        console.log(chosenWord)
+    }, [chosenWord])
 
 
 
@@ -208,7 +214,6 @@ function GameScreen() {
 
 
 
-
     function updateGameBoard(keyboardKey) {
 
         let currentBoardLayout = [...boardLayout]
@@ -249,7 +254,7 @@ function GameScreen() {
 
         <div className="flex flex-col mt-2  overflow-hidden h-screen justify-between">
             <Navbar />
-            <Board layout={boardLayout} />
+            <Board currentPos={currentPos} layout={boardLayout} />
             <Keyboard correctLetters={correctLetters} incorrectLetters={incorrectLetters} existsLetters={existsLetters} layout={keyboardLayout} updateGameBoard={updateGameBoard} handleBackspace={removeLetter} handleEnter={confirmGuess} />
         </div>
     )
