@@ -10,8 +10,6 @@
   }
 }
 
-
-
 .letter-pop {
 
     animation-duration: 100ms;
@@ -35,10 +33,10 @@
 
 
 
-.tile-flip-enter, .title-flip-appear {
+.tile-flip-enter, .tile-flip-appear {
     transform: rotateX(0deg);
   }
-  .tile-flip-enter-active, .title-flip-appear-active {
+  .tile-flip-enter-active, .tile-flip-appear-active {
     transform: rotateX(90deg);
     animation-fill-mode: forwards;
     
@@ -54,3 +52,4 @@
     transform: rotateX(0deg);
     transition: transform 250ms;
   }
+
