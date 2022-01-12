@@ -3,7 +3,7 @@ import React from 'react'
 function Navbar() {
     return (
         <div>
-            <div className="md:mx-0 mx-2 flex justify-between items-center space-x-8 border-b border-neutral-400 pb-2">
+            <div className=" md:mx-0 mx-2 flex justify-between items-center space-x-8 border-b mt-2 border-neutral-400 pb-2 mb-4ffff">
                 <button className="cursor-pointer hover:text-neutral-50" href="">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
