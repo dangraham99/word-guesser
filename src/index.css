@@ -1,3 +1,48 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.letter-pop {
+
+    animation-duration: 100ms;
+    animation-name: letterpop;
+
+}
+
+
+@keyframes letterpop {
+
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    40% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    
+}
+
+
+
+.tile-flip-enter, .title-flip-appear {
+    transform: rotateX(0deg);
+  }
+  .tile-flip-enter-active, .title-flip-appear-active {
+    transform: rotateX(90deg);
+    animation-fill-mode: forwards;
+    
+  }
+  .tile-flip-enter-done, .tile-flip-appear-done {
+      transform: rotateX(0deg);
+      transition: transform 250ms;
+  }
+  .tile-flip-exit {
+    transform: rotateX(90deg);
+  }
+  .tile-flip-exit-active {
+    transform: rotateX(0deg);
+    transition: transform 250ms;
+  }
