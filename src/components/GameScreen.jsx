@@ -7,7 +7,7 @@ import seedrandom from 'seedrandom'
 function GameScreen() {
 
     const STATUS = {
-        NEUTRAL: 'netutral',
+        NEUTRAL: 'neutral',
         CORRECT: 'correct',
         INCORRECT: 'incorrect',
         EXISTS: 'exists'
@@ -107,7 +107,7 @@ function GameScreen() {
             alert(`Game state: ${gameState}`)
         }
 
-    })
+    }, [gameState])
 
 
 
@@ -170,10 +170,10 @@ function GameScreen() {
 
 
 
-        let i = 0
+
 
         //iterate through the guess array and evaluate the letters against chosen word array
-        guessArray.forEach(letterObject => {
+        guessArray.forEach((letterObject, i) => {
             console.log(`Evaluating if ${letterObject.val} is equal to ${chosenWordArray[i]}`)
             if (letterObject.val === chosenWordArray[i]) {
                 //we need to remove the value to stop a duplicate (incorrect) return of a correct answer
@@ -182,10 +182,13 @@ function GameScreen() {
                 let tempArray = correctLetters
                 tempArray.push(letterObject.val)
                 setCorrectLetters(tempArray)
+            }
+        })
 
 
 
-            } else if (chosenWordArray.includes(letterObject.val)) {
+        guessArray.forEach((letterObject, i) => {
+            if (chosenWordArray.includes(letterObject.val)) {
                 //find where in the chosenWord the value is and remove it, so that we do not get >=2 hits for the same single letter
                 const targetIndex = chosenWordArray.indexOf(letterObject.val)
                 chosenWordArray.splice(targetIndex, 1)
@@ -194,36 +197,33 @@ function GameScreen() {
                 tempArray.push(letterObject.val)
                 setExistsLetters(tempArray)
 
-            } else {
+            }
+        })
 
+        guessArray.forEach((letterObject, i) => {
+            if (letterObject.status === STATUS.NEUTRAL) {
                 letterObject.status = STATUS.INCORRECT
-
-
-
-                if (!correctLetters.includes(letterObject.val) && !existsLetters.includes(letterObject.val)) {
-
-                    let tempArray = incorrectLetters
-                    tempArray.push(letterObject.val)
-                    setIncorrectLetters(tempArray)
-
-                }
-
-
             }
 
-            if (guessString === chosenWord) {
-                setTimeout(() => { setGameState(STATE.WIN) }, 2000)
-            }
-
-            i++
+        })
 
 
 
-        });
 
 
 
-    }
+
+        if (guessString === chosenWord) {
+            setTimeout(() => { setGameState(STATE.WIN) }, 2000)
+        }
+
+
+
+    };
+
+
+
+
 
 
 
