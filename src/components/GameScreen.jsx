@@ -84,22 +84,16 @@ function GameScreen() {
         localStorage.setItem("incorrectLetters", JSON.stringify(incorrectLetters))
     }
 
-    //cleanup when the game is finished
-    useEffect(() => {
-        if (gameState !== STATE.IN_PROGRESS) {
-            alert(`You have finished the game: ${gameState}`)
-            localStorage.clear()
-        }
-
-
-
-    }, [gameState])
 
     //save to local storage with each guess
     useEffect(() => {
 
-
         flashLocalStorage()
+
+        if (currentPos.guess > 5 && gameState === STATE.IN_PROGRESS) {
+            setTimeout(() => { setGameState(STATE.FAIL) }, 2000)
+        }
+
     }, [currentPos.guess])
 
 
@@ -107,6 +101,13 @@ function GameScreen() {
     useEffect(() => {
         console.log(chosenWord)
     }, [chosenWord])
+
+    useEffect(() => {
+        if (gameState !== STATE.IN_PROGRESS) {
+            alert(`Game state: ${gameState}`)
+        }
+
+    })
 
 
 
@@ -136,12 +137,11 @@ function GameScreen() {
 
     function confirmGuess() {
 
+        //return the full word from the guess array of objects
+        const guessArray = boardLayout[currentPos.guess]
 
-        if (currentPos.character >= 5) {
-
-            //return the full word from the guess array of objects
-            const guessArray = boardLayout[currentPos.guess]
-
+        if (currentPos.character === 5) {
+            //if the guess is a valid length then check if more guesses are necessary 
             evaluateGuess(guessArray)
 
             setCurrentPos({
@@ -149,17 +149,13 @@ function GameScreen() {
                 guess: currentPos.guess + 1
             })
 
+        }
 
-
-
-        } else {
+        else {
             alert("You must complete your current guess!")
         }
 
-        if (currentPos.guess >= 5) {
-            setGameState('fail')
 
-        }
 
 
 
@@ -169,7 +165,9 @@ function GameScreen() {
     function evaluateGuess(guessArray) {
 
         const guessString = guessArray.map(charObject => charObject.val).join("")
-        const chosenWordArray = chosenWord.split("")
+        let chosenWordArray = chosenWord.split("")
+
+
 
 
         let i = 0
@@ -197,15 +195,25 @@ function GameScreen() {
                 setExistsLetters(tempArray)
 
             } else {
+
                 letterObject.status = STATUS.INCORRECT
-                let tempArray = incorrectLetters
-                tempArray.push(letterObject.val)
-                setIncorrectLetters(tempArray)
+
+
+
+                if (!correctLetters.includes(letterObject.val) && !existsLetters.includes(letterObject.val)) {
+
+                    let tempArray = incorrectLetters
+                    tempArray.push(letterObject.val)
+                    setIncorrectLetters(tempArray)
+
+                }
 
 
             }
 
-
+            if (guessString === chosenWord) {
+                setTimeout(() => { setGameState(STATE.WIN) }, 2000)
+            }
 
             i++
 
