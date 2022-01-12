@@ -59,8 +59,10 @@ function GameScreen() {
         guess: 0
     })
 
-    const [chosenWord, setChosenWord] = useState(wordList[randNum].toUpperCase())
-    const [chosenWordArray, setChosenWordArray] = useState(chosenWord.split(""))
+    const initChosenWord = wordList[randNum].toUpperCase()
+
+    const [chosenWord, setChosenWord] = useState("FARMS")
+
     const [boardLayout, setBoardLayout] = useState(JSON.parse(localStorage.getItem("boardLayout")) || initBoardLayout)
     const [gameState, setGameState] = useState(JSON.parse(localStorage.getItem("gameState")) || STATE.IN_PROGRESS)
     const [correctLetters, setCorrectLetters] = useState(JSON.parse(localStorage.getItem("correctLetters")) || [])
@@ -93,8 +95,10 @@ function GameScreen() {
 
     }, [gameState])
 
-    //flash local storage with each guess
+    //save to local storage with each guess
     useEffect(() => {
+
+
         flashLocalStorage()
     }, [currentPos.guess])
 
@@ -103,6 +107,7 @@ function GameScreen() {
     useEffect(() => {
         console.log(chosenWord)
     }, [chosenWord])
+
 
 
 
@@ -164,6 +169,7 @@ function GameScreen() {
     function evaluateGuess(guessArray) {
 
         const guessString = guessArray.map(charObject => charObject.val).join("")
+        const chosenWordArray = chosenWord.split("")
 
 
         let i = 0
@@ -172,7 +178,8 @@ function GameScreen() {
         guessArray.forEach(letterObject => {
             console.log(`Evaluating if ${letterObject.val} is equal to ${chosenWordArray[i]}`)
             if (letterObject.val === chosenWordArray[i]) {
-
+                //we need to remove the value to stop a duplicate (incorrect) return of a correct answer
+                chosenWordArray[i] = "#"
                 letterObject.status = STATUS.CORRECT
                 let tempArray = correctLetters
                 tempArray.push(letterObject.val)
@@ -181,6 +188,9 @@ function GameScreen() {
 
 
             } else if (chosenWordArray.includes(letterObject.val)) {
+                //find where in the chosenWord the value is and remove it, so that we do not get >=2 hits for the same single letter
+                const targetIndex = chosenWordArray.indexOf(letterObject.val)
+                chosenWordArray.splice(targetIndex, 1)
                 letterObject.status = STATUS.EXISTS
                 let tempArray = existsLetters
                 tempArray.push(letterObject.val)
@@ -199,10 +209,7 @@ function GameScreen() {
 
             i++
 
-            if (guessString === chosenWord) {
-                setGameState(STATE.WIN)
 
-            }
 
         });
 
