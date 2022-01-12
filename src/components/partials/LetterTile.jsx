@@ -65,6 +65,8 @@ function LetterTile(props) {
 
 
 
+
+
     return (
 
         <CSSTransition in={props.reveal} classNames={"tile-flip"} appear={true} timeout={250 * props.timeOutDelay}>
