@@ -3,13 +3,21 @@
 @tailwind utilities;
 
 
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+
 .letter-pop {
 
     animation-duration: 100ms;
     animation-name: letterpop;
 
 }
-
 
 @keyframes letterpop {
 
