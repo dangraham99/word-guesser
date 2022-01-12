@@ -67,7 +67,7 @@ function LetterTile(props) {
 
     return (
 
-        <CSSTransition in={props.reveal} classNames={"tile-flip"} appear={true} timeout={300 * props.timeOutDelay}>
+        <CSSTransition in={props.reveal} classNames={"tile-flip"} appear={true} timeout={250 * props.timeOutDelay}>
             <div className={classStyling}>
                 <span className="letter">{props.children || <>&nbsp;</>}</span>
             </div>
