@@ -1,12 +1,16 @@
 import React from 'react'
+import { Trans, useTranslation } from 'react-i18next'
+
+
 
 function Footer() {
+    const { t } = useTranslation()
     return (
         <div>
             <div className="text-center mb-8 text-xs">
-                Developed  by <a className="text-bold underline text-white" href="https://twitter.com/daniel_graham99">Daniel Graham</a>, inspired by the orginal concept from <a className="text-bold underline text-white" href="https://www.powerlanguage.co.uk/">@powerlanguage</a>
+                <Trans components={{ l1: <a className="text-bold underline text-white" href="https://twitter.com/daniel_graham99" />, l2: <a className="text-bold underline text-white" href="https://www.powerlanguage.co.uk/" /> }} t={t} i18nKey={'footerText'} >Developed  by Daniel Graham, inspired by the orginal concept from @powerlanguage</Trans>
             </div>
-        </div>
+        </div >
     )
 }
 

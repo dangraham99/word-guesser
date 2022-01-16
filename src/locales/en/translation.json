@@ -1,0 +1,68 @@
+{
+    "appName": "Wordle",
+    "footerText": "Developed by <l1>Daniel Graham</l1>, inspired by the original concept by <l2>@powerlanguage</l2>",
+    "messages": {
+        "invalidGuessTooManyChars": "You cannot add more letters to this guess!",
+        "gameWin": "You guessed the word!",
+        "gameOver": "Uh oh, you're out of guesses! The word was: ",
+        "invalidGuessMinimumChars": "You cannot remove any more characters!",
+        "invalidGuessIncompleteChars": "You need to complete your guess!"
+    },
+    "about": {
+        "heading": "About",
+        "introPara": "This project is the same concept as the original <l>WORDLE</l> game designed by @powelanguage. Check it out if you enjoyed this.",
+        "howToHeading": "How to play:",
+        "howToPara": "Players have <bold>six</bold> attempts to guess the five letter word. Once players make their guess, the tiles will change colour depending on how close your guess was to the word. You can then use this information for your next guess...",
+        "exampleHeading": "Example guesses",
+        "exampleGuess1": {
+            "tile1": "H",
+            "tile2": "A",
+            "tile3": "P",
+            "tile4": "P",
+            "tile5": "Y",
+            "hint": "The letter <bold>A</bold> is in the word, in the correct place."
+        },
+        "exampleGuess2": {
+            "tile1": "P",
+            "tile2": "I",
+            "tile3": "L",
+            "tile4": "O",
+            "tile5": "T",
+            "hint": "The letter <bold>O</bold> is in the word but not at that place."
+        },
+        "exampleGuess3": {
+            "tile1": "T",
+            "tile2": "O",
+            "tile3": "A",
+            "tile4": "S",
+            "tile5": "T",
+            "hint": "The letter <bold>S</bold> is not in the word at all."
+        },
+        "newPuzzle": "A new puzzle is available each day!"
+    },
+    "settings": {
+        "heading": "Settings",
+        "darkMode": {
+            "title": "Dark mode",
+            "hint": "Turns on a dark colour theme"
+        },
+        "contrastMode": {
+            "title": "Contrast mode",
+            "hint": "High contrast colour theme"
+        },
+        "selectLocale": {
+            "title": "Select locale",
+            "hint": "Changes the language and available keyboard. <bold>This will reset your statistics.</bold>"
+        }
+    },
+    "stats": {
+        "heading": "Statistics",
+        "played": "Played",
+        "won": "Won",
+        "currentStreak": "Current streak",
+        "maxStreak": "Max streak",
+        "distribution": "Guess distribution",
+        "chartKey": "Games won",
+        "shareButton": "Share"
+    }
+}
