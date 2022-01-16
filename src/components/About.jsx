@@ -14,7 +14,7 @@ function About() {
                     <div>
                         <h2 className='font-bold text-base mb-2'>How to play: </h2>
                         <p className="text-sm">Players have <strong>six</strong> attempts to guess the five letter word. Once players make their guess, the tiles will change colour depending on how close your guess was to the word. You can then use this information for your next guess...</p>
-                        <h2 className='font-bold text-base my-4'>Examples: </h2>
+                        <h2 className='font-bold text-base my-4'>Example guesses: </h2>
                         <div className="space-y-4 pb-4 border-b border-neutral-400">
                             <div className='space-y-1'>
                                 <div className="flex space-x-1">
@@ -34,7 +34,7 @@ function About() {
                                     <div className="flex h-10 w-10 spacing-10 gap-1 justify-center items-center text-center text-2xl font-bold  bg-tile-exists-yellow">O</div>
                                     <div className="flex h-10 w-10 spacing-10 gap-1 justify-center items-center text-center text-2xl font-bold border border-neutral-600">T</div>
                                 </div>
-                                <p>The letter <strong>O</strong> is in the word but it is in the wrong place.</p>
+                                <p>The letter <strong>O</strong> is in the word but not at that place.</p>
                             </div>
                             <div className='space-y-1'>
                                 <div className="flex space-x-1">

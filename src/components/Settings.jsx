@@ -14,14 +14,14 @@ function Settings() {
                             <div className="flex  border-b border-neutral-700 justify-between items-center">
                                 <div className='ml-4 pb-2'>
                                     <h2 className="text-xl">Dark mode</h2>
-                                    <p className="text-sm text-neutral-500">How much clearer can we say it? </p>
+                                    <p className="text-sm text-neutral-500">Turns on a dark colour theme </p>
                                 </div>
                                 <SwitchToggle />
                             </div>
                             <div className="flex   border-b border-neutral-700 justify-between items-center">
                                 <div className='ml-4 pb-2'>
-                                    <h2 className="text-xl">Colourblind Mode</h2>
-                                    <p className="text-sm text-neutral-500">High contrast colours</p>
+                                    <h2 className="text-xl">High contrast mode</h2>
+                                    <p className="text-sm text-neutral-500">High contrast colour theme</p>
                                 </div>
                                 <SwitchToggle />
                             </div>
