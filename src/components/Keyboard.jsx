@@ -13,37 +13,37 @@ function Keyboard(props) {
 
     // handle input with passed value
     function handleInput(keyboardKey) {
+        // only if the game is in progress do we allow keyboard input
+        if (props.gameState === "in_progress") {
 
+            let validKey = false
+            keyboardKey = keyboardKey.toUpperCase()
 
-
-        let validKey = false
-        keyboardKey = keyboardKey.toUpperCase()
-
-        //check to see if the key is any of the control keys that we have seperate functions for (if user pressed their keyboard)
-        if (keyboardKey === "BACKSPACE" || keyboardKey === "DELETE") {
-            props.handleBackspace()
-        }
-
-        if (keyboardKey === "ENTER") {
-            props.handleEnter()
-        }
-
-
-        //checks if the input exists in the mutli-dimensional keyboard array
-        for (var outerIndex = 0; outerIndex < props.layout.length; outerIndex++) {
-            for (var innerIndex = 0; innerIndex < props.layout[outerIndex].length; innerIndex++) {
-                if (props.layout[outerIndex][innerIndex] === keyboardKey) {
-
-                    validKey = true
-                }
+            //check to see if the key is any of the control keys that we have seperate functions for (if user pressed their keyboard)
+            if (keyboardKey === "BACKSPACE" || keyboardKey === "DELETE") {
+                props.handleBackspace()
             }
 
-        }
+            if (keyboardKey === "ENTER") {
+                props.handleEnter()
+            }
 
-        if (validKey) {
-            props.updateGameBoard(keyboardKey)
-        }
 
+            //checks if the input exists in the mutli-dimensional keyboard array
+            for (var outerIndex = 0; outerIndex < props.layout.length; outerIndex++) {
+                for (var innerIndex = 0; innerIndex < props.layout[outerIndex].length; innerIndex++) {
+                    if (props.layout[outerIndex][innerIndex] === keyboardKey) {
+
+                        validKey = true
+                    }
+                }
+
+            }
+
+            if (validKey) {
+                props.updateGameBoard(keyboardKey)
+            }
+        }
 
     }
 
