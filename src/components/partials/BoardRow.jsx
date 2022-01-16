@@ -21,7 +21,7 @@ function BoardRow(props) {
 
         if (props.invalidGuess && props.activeRow) {
 
-            setClassStyling(classStyling + " animate__animated animate__shakeX")
+            setClassStyling(classStyling + " animate__animated animate__fastest animate__shakeX")
 
 
         }
@@ -35,7 +35,7 @@ function BoardRow(props) {
 
     return (
 
-        <div className={classStyling} onAnimationEnd={() => { setClassStyling(classStyling.replace(" animate__animated animate__shakeX", "")) }}>
+        <div className={classStyling} onAnimationEnd={() => { setClassStyling(classStyling.replace(" animate__animated animate__fastest animate__shakeX", "")) }}>
             {
 
                 props.guess.map((letterObject, index) => {
