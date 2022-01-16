@@ -62,7 +62,7 @@ function GameScreen() {
 
 
 
-    const [currentPos, setCurrentPos] = useState(JSON.parse(localStorage.getItem("currentPos")) || {
+    const [currentPos, setCurrentPos] = useState({
         character: 0,
         guess: 0
     })
@@ -71,12 +71,12 @@ function GameScreen() {
 
     const [chosenWord, setChosenWord] = useState(initChosenWord)
     const [message, setMessage] = useState({ type: null, string: null, show: false })
-    const [boardLayout, setBoardLayout] = useState(JSON.parse(localStorage.getItem("boardLayout")) || initBoardLayout)
-    const [gameState, setGameState] = useState(JSON.parse(localStorage.getItem("gameState")) || STATE.IN_PROGRESS)
-    const [correctLetters, setCorrectLetters] = useState(JSON.parse(localStorage.getItem("correctLetters")) || [])
-    const [existsLetters, setExistsLetters] = useState(JSON.parse(localStorage.getItem("existsLetters")) || [])
-    const [incorrectLetters, setIncorrectLetters] = useState(JSON.parse(localStorage.getItem("incorrectLetters")) || [])
-    const [playerStats, setPlayerStats] = useState(JSON.parse(localStorage.getItem("playerStats")) || {
+    const [boardLayout, setBoardLayout] = useState(initBoardLayout)
+    const [gameState, setGameState] = useState(STATE.IN_PROGRESS)
+    const [correctLetters, setCorrectLetters] = useState([])
+    const [existsLetters, setExistsLetters] = useState([])
+    const [incorrectLetters, setIncorrectLetters] = useState([])
+    const [playerStats, setPlayerStats] = useState({
         gamesPlayed: 0,
         gamesWon: 0,
         winRate: 0,
@@ -88,6 +88,19 @@ function GameScreen() {
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [tileAnimationComplete, setTileAnimationComplete] = useState(false)
 
+
+
+    useEffect(() => {
+        //reset the state if its a new day
+        if (JSON.parse(localStorage.getItem("chosenWord")) !== chosenWord) {
+            console.log("refreshing state...")
+            resetState()
+            localStorage.setItem("chosenWord", JSON.stringify(chosenWord))
+        } else {
+            getStateFromLocalStorage()
+        }
+
+    }, [])
 
     function currentDateString() {
         const date = new Date()
@@ -102,6 +115,36 @@ function GameScreen() {
         return randNum
 
     }
+
+
+    function resetState() {
+
+        setBoardLayout(initBoardLayout)
+        setGameState(STATE.IN_PROGRESS)
+        setCorrectLetters([])
+        setExistsLetters([])
+        setIncorrectLetters([])
+        setCurrentPos({
+            character: 0,
+            guess: 0
+        })
+        flashLocalStorage()
+
+
+
+    }
+
+    function getStateFromLocalStorage() {
+
+        setBoardLayout(JSON.parse(localStorage.getItem("boardLayout")))
+        setGameState(JSON.parse(localStorage.getItem("gameState")))
+        setCorrectLetters(JSON.parse(localStorage.getItem("correctLetters")))
+        setExistsLetters(JSON.parse(localStorage.getItem("existsLetters")))
+        setIncorrectLetters(JSON.parse(localStorage.getItem("incorrectLetters")))
+        setCurrentPos(JSON.parse(localStorage.getItem("currentPos")))
+
+    }
+
 
     function onTileAnimationComplete(index) {
         if (index === 4) {
@@ -130,6 +173,9 @@ function GameScreen() {
         localStorage.setItem("existsLetters", JSON.stringify(existsLetters))
         localStorage.setItem("incorrectLetters", JSON.stringify(incorrectLetters))
         localStorage.setItem("playerStats", JSON.stringify(playerStats))
+
+
+
 
 
     }
@@ -164,14 +210,18 @@ function GameScreen() {
 
             setTimeout(() => {
                 setMessage({ type: null, string: null, show: false })
+                setModalIsOpen(true)
             }, 8000)
         }
         else if (gameState === STATE.FAIL) {
             setMessage({ type: MESSAGE.GAME_OVER, string: `Uh oh, you're out of guesses! The word was ${chosenWord}` })
-            setTimeout(() => setMessage({ type: null, string: null, show: false }), 8000)
+            setTimeout(() => {
+                setMessage({ type: null, string: null, show: false })
+                setModalIsOpen(true)
+            }, 8000)
         }
 
-        setModalIsOpen(true)
+
 
     }, [tileAnimationComplete])
 
@@ -220,6 +270,8 @@ function GameScreen() {
                 character: 0,
                 guess: currentPos.guess + 1
             })
+
+
 
         }
 
@@ -382,7 +434,7 @@ function GameScreen() {
                 <Modal playerStats={playerStats} show={modalIsOpen} toggleModal={toggleModal} />
                 {message.show ? <Message message={message} /> : <span />}
                 <Board onTileAnimationComplete={onTileAnimationComplete} invalidGuess={message.type === MESSAGE.INVALID_GUESS} currentPos={currentPos} layout={boardLayout} />
-                <Keyboard correctLetters={correctLetters} incorrectLetters={incorrectLetters} existsLetters={existsLetters} layout={enKeyboard} updateGameBoard={updateGameBoard} handleBackspace={removeLetter} handleEnter={confirmGuess} />
+                <Keyboard gameState={gameState} correctLetters={correctLetters} incorrectLetters={incorrectLetters} existsLetters={existsLetters} layout={enKeyboard} updateGameBoard={updateGameBoard} handleBackspace={removeLetter} handleEnter={confirmGuess} />
             </div>
 
         </div>
