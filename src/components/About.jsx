@@ -4,10 +4,10 @@ import Footer from './partials/Footer'
 
 function About() {
     return (
-        <div className="flex flex-col justify-between h-screen">
+        <div className="flex flex-col justify-between h-screen ">
             <div>
                 <PageHeader title={"About"} />
-                <div className="text-sm">
+                <div className="text-sm mx-4 md:mx-0">
                     <div className="mb-8 text-sm">
                         <p>This project is the same concept as the original <a href="https://www.powerlanguage.co.uk/wordle/" className="font-bold underline text-white">WORDLE</a> game designed by @powerlanguage. Check it out if you enjoyed this.</p>
                     </div>
