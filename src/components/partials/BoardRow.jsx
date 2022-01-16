@@ -39,7 +39,7 @@ function BoardRow(props) {
             {
 
                 props.guess.map((letterObject, index) => {
-                    return <LetterTile activeTile={props.activeRow && props.currentPos.character === index} reveal={reveal} status={letterObject.status} timeOutDelay={index + 1} key={index}>{letterObject.val}</LetterTile>
+                    return <LetterTile index={index} onTileAnimationComplete={props.onTileAnimationComplete} activeTile={props.activeRow && props.currentPos.character === index} reveal={reveal} status={letterObject.status} timeOutDelay={index + 1} key={index}>{letterObject.val}</LetterTile>
                 })
 
             }
