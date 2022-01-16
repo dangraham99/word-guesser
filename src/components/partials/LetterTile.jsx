@@ -28,6 +28,10 @@ function LetterTile(props) {
             setClassStyling(baseClass + "bg-tile-exists-yellow")
         }
 
+        if (props.status === "neutral") {
+            setClassStyling(baseClass + "border border-neutral-600")
+        }
+
 
     }
 
