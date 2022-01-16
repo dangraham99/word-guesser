@@ -4,6 +4,7 @@ import Board from './Board'
 import Keyboard from './Keyboard'
 import Message from './partials/Message'
 import seedrandom from 'seedrandom'
+import Modal from './Modal'
 
 function GameScreen() {
 
@@ -60,17 +61,13 @@ function GameScreen() {
 
 
 
-    const date = new Date()
-    const seed = (date.getDate() + 4) + "-" + date.getMonth() + "-" + date.getFullYear()
-    const psuedorand = seedrandom(seed.toString())
-    const randNum = Math.round(psuedorand() * enWordList.length)
 
     const [currentPos, setCurrentPos] = useState(JSON.parse(localStorage.getItem("currentPos")) || {
         character: 0,
         guess: 0
     })
 
-    const initChosenWord = enWordList[randNum].toUpperCase()
+    const initChosenWord = enWordList[psrg()].toUpperCase()
 
     const [chosenWord, setChosenWord] = useState(initChosenWord)
     const [message, setMessage] = useState({ type: null, string: null, show: false })
@@ -88,8 +85,39 @@ function GameScreen() {
         previousGames: { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 }
     })
 
+    const [modalIsOpen, setModalIsOpen] = useState(false)
+    const [tileAnimationComplete, setTileAnimationComplete] = useState(false)
 
 
+    function currentDateString() {
+        const date = new Date()
+        const dateString = (date.getDate()) + "-" + (date.getMonth() + 1) + "-" + date.getFullYear()
+        return dateString.toString()
+    }
+
+    function psrg() {
+
+        const psuedorand = seedrandom(currentDateString)
+        const randNum = Math.round(psuedorand() * enWordList.length)
+        return randNum
+
+    }
+
+    function onTileAnimationComplete(index) {
+        if (index === 4) {
+            setTileAnimationComplete(true)
+        }
+        else {
+            setTileAnimationComplete(false)
+        }
+    }
+
+
+    function toggleModal() {
+
+        setModalIsOpen(!modalIsOpen)
+
+    }
 
 
     function flashLocalStorage() {
@@ -125,14 +153,14 @@ function GameScreen() {
     }, [chosenWord])
 
     useEffect(() => {
-        if (gameState === STATE.WIN) {
+        if (gameState === STATE.WIN && tileAnimationComplete) {
 
 
 
 
-            setTimeout(() => {
-                setMessage({ type: MESSAGE.GAME_WIN, string: "You guessed the word!", show: true })
-            }, 2000)
+
+            setMessage({ type: MESSAGE.GAME_WIN, string: "You guessed the word!", show: true })
+
 
             setTimeout(() => {
                 setMessage({ type: null, string: null, show: false })
@@ -143,13 +171,16 @@ function GameScreen() {
             setTimeout(() => setMessage({ type: null, string: null, show: false }), 8000)
         }
 
-    }, [gameState])
+        setModalIsOpen(true)
+
+    }, [tileAnimationComplete])
 
 
     //clear form messages when the user presses a button
     useEffect(() => {
         setMessage({ type: null, string: message.string, show: false })
     }, [currentPos.character])
+
 
 
     function removeLetter() {
@@ -347,9 +378,10 @@ function GameScreen() {
 
 
             <div className="flex flex-col mt-2 h-screen overflow-hidden justify-between">
-                <Navbar />
+                <Navbar toggleModal={toggleModal} />
+                <Modal playerStats={playerStats} show={modalIsOpen} toggleModal={toggleModal} />
                 {message.show ? <Message message={message} /> : <span />}
-                <Board invalidGuess={message.type === MESSAGE.INVALID_GUESS} currentPos={currentPos} layout={boardLayout} />
+                <Board onTileAnimationComplete={onTileAnimationComplete} invalidGuess={message.type === MESSAGE.INVALID_GUESS} currentPos={currentPos} layout={boardLayout} />
                 <Keyboard correctLetters={correctLetters} incorrectLetters={incorrectLetters} existsLetters={existsLetters} layout={enKeyboard} updateGameBoard={updateGameBoard} handleBackspace={removeLetter} handleEnter={confirmGuess} />
             </div>
 
