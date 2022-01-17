@@ -5,6 +5,7 @@ import Keyboard from './Keyboard'
 import Message from './partials/Message'
 import seedrandom from 'seedrandom'
 import Modal from './Modal'
+import { useTranslation } from 'react-i18next'
 
 function GameScreen() {
 
@@ -66,6 +67,8 @@ function GameScreen() {
         character: 0,
         guess: 0
     })
+
+    const { t } = useTranslation()
 
     const initChosenWord = enWordList[psrg()].toUpperCase()
 
@@ -205,7 +208,7 @@ function GameScreen() {
 
 
 
-            setMessage({ type: MESSAGE.GAME_WIN, string: "You guessed the word!", show: true })
+            setMessage({ type: MESSAGE.GAME_WIN, string: t('messages.gameWin'), show: true })
 
 
             setTimeout(() => {
@@ -214,7 +217,7 @@ function GameScreen() {
             }, 8000)
         }
         else if (gameState === STATE.FAIL) {
-            setMessage({ type: MESSAGE.GAME_OVER, string: `Uh oh, you're out of guesses! The word was ${chosenWord}` })
+            setMessage({ type: MESSAGE.GAME_OVER, string: `${t('messages.gameOver')} ${chosenWord}` })
             setTimeout(() => {
                 setMessage({ type: null, string: null, show: false })
                 setModalIsOpen(true)
@@ -248,7 +251,7 @@ function GameScreen() {
             })
 
         } else {
-            setMessage({ type: MESSAGE.INVALID_GUESS, string: "You cannot remove any more characters!", show: true })
+            setMessage({ type: MESSAGE.INVALID_GUESS, string: t('messages.invalidGuessMinimumChars'), show: true })
         }
 
 
@@ -277,7 +280,7 @@ function GameScreen() {
 
         else {
 
-            setMessage({ type: MESSAGE.INVALID_GUESS, string: 'You need to complete your guess!', show: true })
+            setMessage({ type: MESSAGE.INVALID_GUESS, string: t('messages.invalidGuessIncompleteChars'), show: true })
 
         }
 
@@ -380,7 +383,7 @@ function GameScreen() {
             })
 
         } else {
-            setMessage({ type: MESSAGE.INVALID_GUESS, string: 'You cannot add more letters to this guess!', show: true })
+            setMessage({ type: MESSAGE.INVALID_GUESS, string: t('messages.invalidGuessTooManyChars'), show: true })
         }
     }
 

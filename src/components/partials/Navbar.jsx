@@ -1,7 +1,13 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 
+
+
 function Navbar(props) {
+
+    const { t } = useTranslation()
+
     return (
         <div>
             <div className=" md:mx-0 mx-2 flex flex-row  items-center space-x-8 border-b mt-2 border-neutral-400 pb-2 mb-4ffff">
@@ -15,7 +21,7 @@ function Navbar(props) {
                     </Link>
                 </div>
                 <div className="flex flex-1">
-                    <h1 className="font-bold uppercase tracking-wider text-3xl">Wordle</h1>
+                    <h1 className="font-bold uppercase tracking-wider text-3xl">{t('appName')}</h1>
                 </div>
                 <div className="flex flex-1 space-x-2 justify-end">
                     <button onClick={props.toggleModal} className="cursor-pointer hover:text-neutral-50" href="">
