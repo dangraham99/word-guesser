@@ -3,10 +3,17 @@ import PageHeader from './partials/PageHeader'
 import Footer from './partials/Footer'
 import SwitchToggle from './partials/SwitchToggle'
 import { Trans, useTranslation } from 'react-i18next'
+import i18n from 'i18next';
 
-function Settings() {
+function Settings(props) {
 
     const { t } = useTranslation()
+
+    function changeLanguageHandler(lang) {
+        i18n.changeLanguage(lang)
+        localStorage.setItem('lang', lang)
+
+    }
 
     return (
         <div>
@@ -36,11 +43,11 @@ function Settings() {
                                         <p className="text-sm text-neutral-500"><Trans i18nKey={'settings.selectLocale.hint'} t={t} components={{ bold: <strong /> }} >Changes the language and available keyboards</Trans></p>
                                     </div>
                                     <div class="inline-flex rounded-md shadow-sm" role="group">
-                                        <button type="button" class="py-2 px-4 text-sm font-medium text-gray-900 bg-transparent rounded-l-lg border border-gray-900 hover:bg-neutral-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-neutral-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
+                                        <button onClick={() => { changeLanguageHandler('en') }} type="button" class="py-2 px-4 text-sm font-medium text-gray-900 bg-transparent rounded-l-lg border border-gray-900 hover:bg-neutral-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-neutral-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
                                             English
                                         </button>
 
-                                        <button type="button" class="py-2 px-4 text-sm font-medium text-gray-900 bg-transparent rounded-r-md border border-gray-900 hover:bg-neutral-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-neutral-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
+                                        <button onClick={() => { changeLanguageHandler('de') }} type="button" class="py-2 px-4 text-sm font-medium text-gray-900 bg-transparent rounded-r-md border border-gray-900 hover:bg-neutral-900 hover:text-white focus:z-10 focus:ring-2 focus:ring-neutral-500 focus:bg-gray-900 focus:text-white dark:border-white dark:text-white dark:hover:text-white dark:hover:bg-neutral-700 dark:focus:bg-neutral-700">
                                             Deutsch
                                         </button>
                                     </div>
