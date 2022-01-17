@@ -268,16 +268,25 @@ function GameScreen() {
 
         //return the full word from the guess array of objects
         const guessArray = boardLayout[currentPos.guess]
+        const guessString = guessArray.map(charObject => charObject.val).join("")
 
         if (currentPos.character === 5) {
-            //if the guess is a valid length then check if more guesses are necessary 
-            evaluateGuess(guessArray)
 
-            setCurrentPos({
-                character: 0,
-                guess: currentPos.guess + 1
-            })
 
+            //if guess in wordlist (either case)
+            if (wordList.includes(guessString) || wordList.includes(guessString.toLowerCase())) {
+                //if the guess is a valid length then check if more guesses are necessary 
+                evaluateGuess(guessArray)
+
+                setCurrentPos({
+                    character: 0,
+                    guess: currentPos.guess + 1
+                })
+            }
+            else {
+                setMessage({ type: MESSAGE.INVALID_GUESS, string: t('messages.invalidGuessWordNotFound'), show: true })
+
+            }
 
 
         }

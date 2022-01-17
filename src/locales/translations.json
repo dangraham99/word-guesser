@@ -7,7 +7,8 @@
             "gameWin": "You guessed the word!",
             "gameOver": "Uh oh, you're out of guesses! The word was: ",
             "invalidGuessMinimumChars": "You cannot remove any more characters!",
-            "invalidGuessIncompleteChars": "You need to complete your guess!"
+            "invalidGuessIncompleteChars": "You need to complete your guess!",
+            "invalidGuessWordNotFound": "This word is not in the list!"
         },
         "about": {
             "heading": "About",
