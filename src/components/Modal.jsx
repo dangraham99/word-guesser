@@ -51,7 +51,7 @@ export default function Modal(props) {
             ${emojiGuesses[5].join("").trim()}
             `
         navigator.clipboard.writeText(emojiString.trim())
-        console.log(emojiString.trim())
+
 
     }
 

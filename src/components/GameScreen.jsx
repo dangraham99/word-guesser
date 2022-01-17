@@ -100,7 +100,7 @@ function GameScreen() {
     useEffect(() => {
         //reset the state if its a new day
         if (JSON.parse(localStorage.getItem("chosenWord")) !== chosenWord) {
-            console.log("refreshing state...")
+
             resetState()
             localStorage.setItem("chosenWord", JSON.stringify(chosenWord))
         } else {
@@ -202,7 +202,7 @@ function GameScreen() {
 
     //debug
     useEffect(() => {
-        console.log(chosenWord)
+
     }, [chosenWord])
 
     useEffect(() => {
@@ -307,7 +307,7 @@ function GameScreen() {
 
         //iterate through the guess array and evaluate the letters against chosen word array
         guessArray.forEach((letterObject, i) => {
-            console.log(`Evaluating if ${letterObject.val} is equal to ${chosenWordArray[i]}`)
+
             if (letterObject.val === chosenWordArray[i]) {
                 //we need to remove the value to stop a duplicate (incorrect) return of a correct answer
                 chosenWordArray[i] = "#"
@@ -405,8 +405,7 @@ function GameScreen() {
 
         for (const i in previousGamesObject) {
 
-            console.log(i)
-            console.log(previousGamesObject[i])
+
 
             if (parseInt(i) === currentPos.guess + 1) {
                 previousGamesObject[i] = previousGamesObject[i] + 1
@@ -423,7 +422,7 @@ function GameScreen() {
             previousGames: previousGamesObject
         })
 
-        console.log(playerStats)
+
 
         localStorage.setItem("playerStats", JSON.stringify(playerStats))
     }
