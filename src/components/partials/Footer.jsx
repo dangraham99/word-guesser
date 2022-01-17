@@ -8,7 +8,7 @@ function Footer() {
     return (
         <div>
             <div className="text-center mb-8 text-xs">
-                <Trans components={{ l1: <a className="text-bold underline text-white" href="https://twitter.com/daniel_graham99" />, l2: <a className="text-bold underline text-white" href="https://www.powerlanguage.co.uk/" /> }} t={t} i18nKey={'footerText'} >Developed  by Daniel Graham, inspired by the orginal concept from @powerlanguage</Trans>
+                <Trans components={{ l1: <a className="text-bold underline text-white" />, l2: <a className="text-bold underline text-white" href="https://www.powerlanguage.co.uk/" /> }} t={t} i18nKey={'footerText'} >Developed  by Daniel Graham, inspired by the orginal concept from @powerlanguage</Trans>
             </div>
         </div >
     )
