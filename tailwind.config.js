@@ -1,4 +1,5 @@
 module.exports = {
+  darkMode: 'class',
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
     "./public/**/*.{js,ts,jsx,tsx,html}"
@@ -18,6 +19,8 @@ module.exports = {
       colors: {
         'tile-correct-green': '#538d4e',
         'tile-exists-yellow': '#b59f3b',
+        'tile-exists-green-light': '#538d4e',
+        'tile-exists-yellow-light': '#538d4e',
       },
 
     }

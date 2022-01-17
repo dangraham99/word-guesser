@@ -6,11 +6,11 @@ import PropTypes from 'prop-types'
 function KeyboardTile({ children, status, setStyle, className = null, optionKey, val, ...rest }) {
 
 
-    const [classStyling, setClassStyling] = useState('bg-neutral-600')
+    const [classStyling, setClassStyling] = useState('bg-gray-400 dark:bg-neutral-600')
 
     function updateStyle(status) {
         if (status === "incorrect") {
-            setClassStyling("bg-neutral-800")
+            setClassStyling("bg-gray-600 dark:bg-neutral-800")
             return
         }
 
@@ -24,7 +24,7 @@ function KeyboardTile({ children, status, setStyle, className = null, optionKey,
             return
         }
 
-        setClassStyling("bg-neutral-600")
+        setClassStyling("bg-gray-400 dark:bg-neutral-600")
 
 
     }

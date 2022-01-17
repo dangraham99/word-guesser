@@ -81,7 +81,7 @@ export default function Modal(props) {
                             leaveFrom="opacity-100"
                             leaveTo="opacity-0"
                         >
-                            <Dialog.Overlay className="fixed inset-0 bg-black opacity-50" />
+                            <Dialog.Overlay className="fixed inset-0 bg-black opacity-80 dark:opacity-50" />
                         </Transition.Child>
 
                         {/* This element is to trick the browser into centering the modal contents. */}
@@ -100,7 +100,7 @@ export default function Modal(props) {
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <div className="inline-block w-full max-w-lg p-4 pb-5  my-8 overflow-hidden text-left align-middle transition-all transform dark:bg-neutral-900 shadow-xl rounded-2xl">
+                            <div className="inline-block w-full max-w-lg p-4 pb-5  my-8 overflow-hidden text-left align-middle transition-all transform bg-neutral-200 dark:bg-neutral-900 shadow-xl rounded-2xl">
                                 <div className="flex justify-end ">
                                     <button type="button" className="flex items-start p-1 rounded-lg hover:bg-neutral-700" onClick={() => props.toggleModal()}>
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

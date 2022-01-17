@@ -15,7 +15,7 @@ function About() {
                 <PageHeader title={t('about.heading')} />
                 <div className="text-sm mx-4 md:mx-0">
                     <div className="mb-8 text-sm">
-                        <p><Trans components={{ l: <a href="https://www.powerlanguage.co.uk/wordle/" className="font-bold underline text-white" />, bold: <strong /> }} i18nKey={'about.introPara'} t={t}>This project is the same concept as the original WORDLE game designed by @powerlanguage. Check it out if you enjoyed this.</Trans></p>
+                        <p><Trans components={{ l: <a href="https://www.powerlanguage.co.uk/wordle/" className="font-bold underline text-blue-500 bg:text-white" />, bold: <strong /> }} i18nKey={'about.introPara'} t={t}>This project is the same concept as the original WORDLE game designed by @powerlanguage. Check it out if you enjoyed this.</Trans></p>
                     </div>
                     <div>
                         <h2 className='font-bold text-base mb-2'>{t('about.howToHeading')} </h2>
@@ -47,7 +47,7 @@ function About() {
                                     <div className="flex h-10 w-10 spacing-10 gap-1 justify-center items-center text-center text-2xl font-bold border border-neutral-600">{t('about.exampleGuess3.tile1')}</div>
                                     <div className="flex h-10 w-10 spacing-10 gap-1 justify-center items-center text-center text-2xl font-bold  border border-neutral-600">{t('about.exampleGuess3.tile2')}</div>
                                     <div className="flex h-10 w-10 spacing-10 gap-1 justify-center items-center text-center text-2xl font-bold border border-neutral-600">{t('about.exampleGuess3.tile3')}</div>
-                                    <div className="flex h-10 w-10 spacing-10 gap-1 justify-center items-center text-center text-2xl font-bold bg-neutral-700">{t('about.exampleGuess3.tile4')}</div>
+                                    <div className="flex h-10 w-10 spacing-10 gap-1 justify-center items-center text-center text-2xl font-bold bg-gray-400 dark:bg-neutral-60">{t('about.exampleGuess3.tile4')}</div>
                                     <div className="flex h-10 w-10 spacing-10 gap-1 justify-center items-center text-center text-2xl font-bold border border-neutral-600">{t('about.exampleGuess3.tile5')}</div>
                                 </div>
                                 <p><Trans i18nKey={'about.exampleGuess3.hint'} t={t} components={{ bold: <strong /> }}>The letter <strong>S</strong> is not in the word at all.</Trans></p>

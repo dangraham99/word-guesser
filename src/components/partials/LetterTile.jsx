@@ -7,7 +7,7 @@ function LetterTile(props) {
 
 
     const baseClass = "flex h-15 w-15 spacing-15 gap-1 justify-center items-center text-center text-4xl font-bold "
-    const [classStyling, setClassStyling] = useState(baseClass + "border border-neutral-600")
+    const [classStyling, setClassStyling] = useState(baseClass + " border border-neutral-600")
 
 
 
@@ -16,7 +16,7 @@ function LetterTile(props) {
 
     function updateStyling() {
         if (props.status === "incorrect") {
-            setClassStyling(baseClass + "bg-neutral-600")
+            setClassStyling(baseClass + "bg-gray-400 dark:bg-neutral-600")
 
         }
 
