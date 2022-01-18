@@ -41,15 +41,13 @@ export default function Modal(props) {
 
 
         const emojiString =
-            `
-            Wordle ${flagEmoji.trim()}
-            ${emojiGuesses[0].join("").trim()}
-            ${emojiGuesses[1].join("").trim()}
-            ${emojiGuesses[2].join("").trim()}
-            ${emojiGuesses[3].join("").trim()}
-            ${emojiGuesses[4].join("").trim()}
-            ${emojiGuesses[5].join("").trim()}
-            `
+            `Wordle (${props.currentPos.guess}/6) ${flagEmoji.trim()}
+${emojiGuesses[0].join("").trim()}
+${emojiGuesses[1].join("").trim()}
+${emojiGuesses[2].join("").trim()}
+${emojiGuesses[3].join("").trim()}
+${emojiGuesses[4].join("").trim()}
+${emojiGuesses[5].join("").trim()}`
         navigator.clipboard.writeText(emojiString.trim())
 
 
@@ -100,17 +98,17 @@ export default function Modal(props) {
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <div className="inline-block w-full max-w-lg p-4 pb-5  my-8 overflow-hidden text-left align-middle transition-all transform bg-neutral-200 dark:bg-neutral-900 shadow-xl rounded-2xl">
+                            <div className="inline-block w-full max-w-lg p-4 pb-5 my-8 overflow-hidden text-left align-middle transition-all transform shadow-xl bg-neutral-200 dark:bg-neutral-900 rounded-2xl">
                                 <div className="flex justify-end ">
                                     <button type="button" className="flex items-start p-1 rounded-lg hover:bg-neutral-700" onClick={() => props.toggleModal()}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                         </svg>
                                     </button>
                                 </div>
-                                <div className="py-4 space-y-2 px-4">
-                                    <h1 className="text-md font-bold text-center uppercase tracking-wider mb-4">{t('stats.heading')}</h1>
-                                    <div className="flex justify-center items-center text-center space-x-10 pb-4">
+                                <div className="px-4 py-4 space-y-2 lg:mx-0">
+                                    <h1 className="mb-4 font-bold tracking-wider text-center uppercase text-md">{t('stats.heading')}</h1>
+                                    <div className="flex items-center justify-center pb-4 mx-4 space-x-10 text-center lg:mx-0">
                                         <div>
                                             <p className="text-4xl">{props.playerStats.gamesPlayed}</p>
                                             <p className="text-sm uppercase">{t('stats.played')}</p>
@@ -132,7 +130,7 @@ export default function Modal(props) {
                                             <p className="text-sm uppercase">{t('stats.maxStreak')}</p>
                                         </div>
                                     </div>
-                                    <h1 className="text-md font-bold text-center uppercase tracking-wider mb-4">{t('stats.distribution')}</h1>
+                                    <h1 className="mb-4 font-bold tracking-wider text-center uppercase text-md">{t('stats.distribution')}</h1>
                                     <div className="mt-8">
                                         <Bar
                                             options={{
@@ -168,8 +166,8 @@ export default function Modal(props) {
                                     </div>
 
                                     <div className="flex justify-center">
-                                        <button onClick={returnEmojis} className="flex mt-4 bg-tile-correct-green hover:bg-green-800 px-2 py-2 rounded-md">
-                                            <span className="font-bold uppercase mr-2">{t('stats.shareButton')}</span>
+                                        <button onClick={returnEmojis} className="flex px-2 py-2 mt-4 rounded-md bg-tile-correct-green hover:bg-green-800">
+                                            <span className="mr-2 font-bold uppercase">{t('stats.shareButton')}</span>
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                                             </svg>
