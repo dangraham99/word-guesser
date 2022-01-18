@@ -193,9 +193,7 @@ function GameScreen() {
 
         flashLocalStorage()
 
-        if (currentPos.guess > 5 && gameState === STATE.IN_PROGRESS) {
-            setTimeout(() => { setGameState(STATE.FAIL) }, 2000)
-        }
+
 
     }, [currentPos.guess])
 
@@ -208,10 +206,6 @@ function GameScreen() {
     useEffect(() => {
         if (gameState === STATE.WIN && tileAnimationComplete) {
 
-
-
-
-
             setMessage({ type: MESSAGE.GAME_WIN, string: t('messages.gameWin'), show: true })
 
 
@@ -221,7 +215,7 @@ function GameScreen() {
             }, 8000)
         }
         else if (gameState === STATE.FAIL) {
-            setMessage({ type: MESSAGE.GAME_OVER, string: `${t('messages.gameOver')} ${chosenWord}` })
+            setMessage({ type: MESSAGE.GAME_OVER, string: `${t('messages.gameOver')} ${chosenWord}`, show: true })
             setTimeout(() => {
                 setMessage({ type: null, string: null, show: false })
                 setModalIsOpen(true)
@@ -282,6 +276,10 @@ function GameScreen() {
                     character: 0,
                     guess: currentPos.guess + 1
                 })
+
+                if (currentPos.guess >= 5) {
+                    setGameState(STATE.FAIL)
+                }
             }
             else {
                 setMessage({ type: MESSAGE.INVALID_GUESS, string: t('messages.invalidGuessWordNotFound'), show: true })
@@ -444,9 +442,9 @@ function GameScreen() {
         <div>
 
 
-            <div className="flex flex-col mt-2 h-screen overflow-hidden justify-between">
+            <div className="flex flex-col justify-between h-screen mt-2 overflow-hidden">
                 <Navbar toggleModal={toggleModal} />
-                <Modal boardLayout={boardLayout} playerStats={playerStats} show={modalIsOpen} toggleModal={toggleModal} />
+                <Modal boardLayout={boardLayout} playerStats={playerStats} show={modalIsOpen} currentPos={currentPos} toggleModal={toggleModal} />
                 {message.show ? <Message message={message} /> : <span />}
                 <Board onTileAnimationComplete={onTileAnimationComplete} invalidGuess={message.type === MESSAGE.INVALID_GUESS} currentPos={currentPos} layout={boardLayout} />
                 <Keyboard gameState={gameState} correctLetters={correctLetters} incorrectLetters={incorrectLetters} existsLetters={existsLetters} layout={keyboard} updateGameBoard={updateGameBoard} handleBackspace={removeLetter} handleEnter={confirmGuess} />
