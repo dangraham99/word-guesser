@@ -47,7 +47,7 @@ function About() {
                                     <div className="flex h-10 w-10 spacing-10 gap-1 justify-center items-center text-center text-2xl font-bold border border-neutral-600">{t('about.exampleGuess3.tile1')}</div>
                                     <div className="flex h-10 w-10 spacing-10 gap-1 justify-center items-center text-center text-2xl font-bold  border border-neutral-600">{t('about.exampleGuess3.tile2')}</div>
                                     <div className="flex h-10 w-10 spacing-10 gap-1 justify-center items-center text-center text-2xl font-bold border border-neutral-600">{t('about.exampleGuess3.tile3')}</div>
-                                    <div className="flex h-10 w-10 spacing-10 gap-1 justify-center items-center text-center text-2xl font-bold bg-gray-400 dark:bg-neutral-60">{t('about.exampleGuess3.tile4')}</div>
+                                    <div className="flex h-10 w-10 spacing-10 gap-1 justify-center items-center text-center text-2xl font-bold bg-gray-400 dark:bg-neutral-600">{t('about.exampleGuess3.tile4')}</div>
                                     <div className="flex h-10 w-10 spacing-10 gap-1 justify-center items-center text-center text-2xl font-bold border border-neutral-600">{t('about.exampleGuess3.tile5')}</div>
                                 </div>
                                 <p><Trans i18nKey={'about.exampleGuess3.hint'} t={t} components={{ bold: <strong /> }}>The letter <strong>S</strong> is not in the word at all.</Trans></p>
