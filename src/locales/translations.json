@@ -70,7 +70,7 @@
     },
     "de": {
         "appName": "Wördl",
-        "footerText": "Entwickelt von <l1>Daniel Graham</l1>, inspiriert vom Original von <l2>@powerlanguage</l2>",
+        "footerText": "Entwickelt von Dan Graham, inspiriert vom Original von <l2>@powerlanguage</l2>",
         "messages": {
             "invalidGuessTooManyChars": "Du kannst diesem Wort keine weiteren Buchstaben hinzufügen!",
             "gameWin": "Du hast das Wort erraten!",
