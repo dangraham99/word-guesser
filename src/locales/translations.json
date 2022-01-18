@@ -1,6 +1,6 @@
 {
     "en": {
-        "appName": "Wordle Demo",
+        "appName": "Demo",
         "footerText": "Developed by Dan Graham, inspired by the original concept by <l2>@powerlanguage</l2>",
         "messages": {
             "invalidGuessTooManyChars": "You cannot add more letters to this guess!",
