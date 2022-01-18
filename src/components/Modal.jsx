@@ -106,28 +106,30 @@ ${emojiGuesses[5].join("").trim()}`
                                         </svg>
                                     </button>
                                 </div>
-                                <div className="px-4 py-4 space-y-2 lg:mx-0">
+                                <div className="py-2 mx-4 space-y-2 lg:mx-0">
                                     <h1 className="mb-4 font-bold tracking-wider text-center uppercase text-md">{t('stats.heading')}</h1>
-                                    <div className="flex items-center justify-center pb-4 mx-4 space-x-10 text-center lg:mx-0">
-                                        <div>
-                                            <p className="text-4xl">{props.playerStats.gamesPlayed}</p>
-                                            <p className="text-sm uppercase">{t('stats.played')}</p>
-                                        </div>
-                                        <div>
-                                            <p className="text-4xl">{props.playerStats.gamesWon}</p>
-                                            <p className="text-sm uppercase">{t('stats.won')}</p>
-                                        </div>
-                                        <div>
-                                            <p className="text-4xl">{(props.playerStats.winRate > 0) ? props.playerStats.winRate : "/"}</p >
-                                            <p className="text-sm uppercase">%</p>
-                                        </div>
-                                        <div>
-                                            <p className="text-4xl">{props.playerStats.currentStreak}</p>
-                                            <p className="text-sm uppercase">{t('stats.currentStreak')}</p>
-                                        </div>
-                                        <div>
-                                            <p className="text-4xl">{props.playerStats.recordStreak}</p>
-                                            <p className="text-sm uppercase">{t('stats.maxStreak')}</p>
+                                    <div className="flex items-center justify-center pb-4 mx-4 text-center lg:mx-0">
+                                        <div className="sm:flex-col sm:space-y-2 md:flex md:justify-between md:space-x-4">
+                                            <div className="md:flex-1 sm:flex-shrink">
+                                                <p className="text-4xl">{props.playerStats.gamesPlayed}</p>
+                                                <p className="text-sm uppercase">{t('stats.played')}</p>
+                                            </div>
+                                            <div className="md:flex-1 sm:flex-shrink">
+                                                <p className="text-4xl">{props.playerStats.gamesWon}</p>
+                                                <p className="text-sm uppercase">{t('stats.won')}</p>
+                                            </div>
+                                            <div className="md:flex-1 sm:flex-shrink">
+                                                <p className="text-4xl">{(props.playerStats.winRate > 0) ? props.playerStats.winRate : "/"}</p >
+                                                <p className="text-sm uppercase">%</p>
+                                            </div>
+                                            <div className="md:flex-1 sm:flex-shrink">
+                                                <p className="text-4xl">{props.playerStats.currentStreak}</p>
+                                                <p className="text-sm uppercase">{t('stats.currentStreak')}</p>
+                                            </div>
+                                            <div className="md:flex-1 sm:flex-shrink">
+                                                <p className="text-4xl">{props.playerStats.recordStreak}</p>
+                                                <p className="text-sm uppercase">{t('stats.maxStreak')}</p>
+                                            </div>
                                         </div>
                                     </div>
                                     <h1 className="mb-4 font-bold tracking-wider text-center uppercase text-md">{t('stats.distribution')}</h1>
