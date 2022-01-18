@@ -328,10 +328,9 @@ function GameScreen() {
 
 
         guessArray.forEach((letterObject, i) => {
-            if (chosenWordArray.includes(letterObject.val)) {
+            if (chosenWordArray.includes(letterObject.val) && letterObject.status != STATUS.CORRECT) {
                 //find where in the chosenWord the value is and remove it, so that we do not get >=2 hits for the same single letter
-                const targetIndex = chosenWordArray.indexOf(letterObject.val)
-                chosenWordArray.splice(targetIndex, 1)
+                chosenWordArray[i] = '#'
                 letterObject.status = STATUS.EXISTS
                 let tempArray = existsLetters
                 tempArray.push(letterObject.val)
