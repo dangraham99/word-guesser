@@ -117,7 +117,7 @@ function GameScreen() {
 
     function psrg() {
 
-        const psuedorand = seedrandom(currentDateString)
+        const psuedorand = seedrandom(currentDateString())
         const randNum = Math.round(psuedorand() * wordList.length)
         return randNum
 
@@ -193,7 +193,7 @@ function GameScreen() {
 
         flashLocalStorage()
 
-        if (currentPos.guess > 5 && gameState === STATE.IN_PROGRESS) {
+        if (currentPos.guess >= 6 && gameState === STATE.IN_PROGRESS) {
             setTimeout(() => { setGameState(STATE.FAIL) }, 2000)
         }
 
