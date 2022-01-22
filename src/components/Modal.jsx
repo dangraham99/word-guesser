@@ -98,18 +98,18 @@ ${emojiGuesses[5].join("").trim()}`
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <div className="inline-block w-full max-w-lg p-4 pb-5 my-8 overflow-hidden text-left align-middle transition-all transform shadow-xl bg-neutral-200 dark:bg-neutral-900 rounded-2xl">
-                                <div className="flex justify-end ">
+                            <div className="inline-block w-full max-w-xl pb-5 my-8 overflow-hidden text-left align-middle transition-all transform shadow-xl bg-neutral-200 dark:bg-neutral-900 rounded-2xl">
+                                <div className="flex justify-end m-4">
                                     <button type="button" className="flex items-start p-1 rounded-lg hover:bg-neutral-700" onClick={() => props.toggleModal()}>
                                         <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                                         </svg>
                                     </button>
                                 </div>
-                                <div className="py-2 mx-4 space-y-2 lg:mx-0">
+                                <div className="py-2 mx-4 space-y-2">
                                     <h1 className="mb-4 font-bold tracking-wider text-center uppercase text-md">{t('stats.heading')}</h1>
-                                    <div className="flex items-center justify-center pb-4 mx-4 text-center lg:mx-0">
-                                        <div className="sm:flex sm:justify-center sm:space-x-8">
+                                    <div className="flex items-center justify-center pb-4 mx-4 text-center">
+                                        <div className="flex sm:justify-center sm:space-x-8">
                                             <div>
                                                 <p className="text-4xl">{props.playerStats.gamesPlayed}</p>
                                                 <p className="text-sm uppercase">{t('stats.played')}</p>
