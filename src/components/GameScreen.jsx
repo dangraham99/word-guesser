@@ -274,14 +274,15 @@ function GameScreen() {
                 //if the guess is a valid length then check if more guesses are necessary 
                 evaluateGuess(guessArray)
 
+
                 setCurrentPos({
                     character: 0,
                     guess: currentPos.guess + 1
                 })
 
-                if (currentPos.guess >= 5) {
-                    setGameState(STATE.FAIL)
-                }
+
+
+
             }
             else {
                 setMessage({ type: MESSAGE.INVALID_GUESS, string: t('messages.invalidGuessWordNotFound'), show: true })
@@ -311,7 +312,10 @@ function GameScreen() {
 
 
 
-
+        if (guessString === chosenWord) {
+            updatePlayerStats()
+            setGameState(STATE.WIN)
+        }
 
 
         //iterate through the guess array and evaluate the letters against chosen word array
@@ -358,13 +362,7 @@ function GameScreen() {
 
 
 
-        if (guessString === chosenWord) {
-            updatePlayerStats()
-            setGameState(STATE.WIN)
 
-
-
-        }
 
 
 
