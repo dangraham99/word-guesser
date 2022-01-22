@@ -10,7 +10,7 @@ function Navbar(props) {
 
     return (
         <div>
-            <div className=" md:mx-0 mx-2 flex flex-row  items-center space-x-8 border-b mt-2 border-neutral-400 pb-2 mb-4ffff">
+            <div className="flex items-center justify-between pb-2 mx-2 mt-2 space-x-8 border-b md:mx-0 border-neutral-400 mb-4ffff">
                 <div className="flex flex-1">
                     <Link to="/about">
                         <button className="cursor-pointer hover:text-neutral-500 dark:hover:text-neutral-50" href="">
@@ -20,10 +20,10 @@ function Navbar(props) {
                         </button>
                     </Link>
                 </div>
-                <div className="flex flex-1">
-                    <h1 className="font-bold uppercase tracking-wider text-3xl">{t('appName')}</h1>
+                <div className="flex justify-center flex-1">
+                    <h1 className="text-3xl font-bold tracking-wider uppercase">{t('appName')}</h1>
                 </div>
-                <div className="flex flex-1 space-x-2 justify-end">
+                <div className="flex justify-end flex-1 space-x-2">
                     <button onClick={props.toggleModal} className="cursor-pointer hover:text-neutral-500 dark:hover:text-neutral-50" href="">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
