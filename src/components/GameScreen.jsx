@@ -22,7 +22,8 @@ function GameScreen() {
     const MESSAGE = {
         INVALID_GUESS: "'invalid-guess'",
         GAME_WIN: "game-win",
-        GAME_OVER: "game-over"
+        GAME_OVER: "game-over",
+        ALERT: "alert"
 
     }
 
@@ -167,6 +168,10 @@ function GameScreen() {
 
         setModalIsOpen(!modalIsOpen)
 
+    }
+
+    function messageAlert(text) {
+        setMessage(text, MESSAGE.ALERT)
     }
 
 
@@ -444,7 +449,7 @@ function GameScreen() {
 
             <div className="flex flex-col justify-between h-screen mt-2 overflow-hidden">
                 <Navbar toggleModal={toggleModal} />
-                <Modal boardLayout={boardLayout} playerStats={playerStats} show={modalIsOpen} currentPos={currentPos} toggleModal={toggleModal} />
+                <Modal gameState={gameState} setAlert={messageAlert} boardLayout={boardLayout} playerStats={playerStats} show={modalIsOpen} currentPos={currentPos} toggleModal={toggleModal} />
                 {message.show ? <Message message={message} /> : <span />}
                 <Board onTileAnimationComplete={onTileAnimationComplete} invalidGuess={message.type === MESSAGE.INVALID_GUESS} currentPos={currentPos} layout={boardLayout} />
                 <Keyboard gameState={gameState} correctLetters={correctLetters} incorrectLetters={incorrectLetters} existsLetters={existsLetters} layout={keyboard} updateGameBoard={updateGameBoard} handleBackspace={removeLetter} handleEnter={confirmGuess} />
