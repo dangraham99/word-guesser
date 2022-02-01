@@ -23,7 +23,8 @@ export default function Modal(props) {
     }
 
     function returnEmojis() {
-        const flagEmoji = i18next.language === "de" ? "🇩🇪" : "🇬🇧"
+
+
         const emojiGuesses = [[], [], [], [], [], []]
         for (var row = 0; row <= 5; row++) {
             for (var tileIndex = 0; tileIndex <= 4; tileIndex++) {
@@ -41,7 +42,7 @@ export default function Modal(props) {
 
 
         const emojiString =
-            `Wordle (${props.currentPos.guess}/6) ${flagEmoji.trim()}
+            `${t('appName')} (${props.currentPos.guess}/6) ${t('localeFlag').trim()}
 ${emojiGuesses[0].join("").trim()}
 ${emojiGuesses[1].join("").trim()}
 ${emojiGuesses[2].join("").trim()}
@@ -49,6 +50,8 @@ ${emojiGuesses[3].join("").trim()}
 ${emojiGuesses[4].join("").trim()}
 ${emojiGuesses[5].join("").trim()}`
         navigator.clipboard.writeText(emojiString.trim())
+
+        alert(t('messages.shareSuccessMsg'))
 
 
     }
@@ -98,7 +101,7 @@ ${emojiGuesses[5].join("").trim()}`
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <div className="inline-block w-full max-w-xl pb-5 my-8 overflow-hidden text-left align-middle transition-all transform shadow-xl bg-neutral-200 dark:bg-neutral-900 rounded-2xl">
+                            <div className="inline-block w-full max-w-xl pb-5 my-8 overflow-y-clip text-left align-middle transition-all transform shadow-xl bg-neutral-200 dark:bg-neutral-900 rounded-2xl">
                                 <div className="flex justify-end m-4">
                                     <button type="button" className="flex items-start p-1 rounded-lg hover:bg-neutral-700" onClick={() => props.toggleModal()}>
                                         <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -109,7 +112,7 @@ ${emojiGuesses[5].join("").trim()}`
                                 <div className="py-2 mx-4 space-y-2">
                                     <h1 className="mb-4 font-bold tracking-wider text-center uppercase text-md">{t('stats.heading')}</h1>
                                     <div className="flex items-center justify-center pb-4 mx-4 text-center">
-                                        <div className="flex sm:justify-center sm:space-x-8">
+                                        <div className="flex space-x-4 md:space-x-8">
                                             <div>
                                                 <p className="text-4xl">{props.playerStats.gamesPlayed}</p>
                                                 <p className="text-sm uppercase">{t('stats.played')}</p>
@@ -167,15 +170,16 @@ ${emojiGuesses[5].join("").trim()}`
                                         />
                                     </div>
 
-                                    <div className="flex justify-center">
-                                        <button onClick={returnEmojis} className="flex px-2 py-2 mt-4 rounded-md bg-tile-correct-green hover:bg-green-800">
-                                            <span className="mr-2 font-bold uppercase">{t('stats.shareButton')}</span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                                            </svg>
-                                        </button>
-                                    </div>
-
+                                    {props.gameState !== 'in_progress' &&
+                                        <div className="flex justify-center">
+                                            <button onClick={returnEmojis} className="flex px-2 py-2 mt-4 rounded-md bg-tile-correct-green hover:bg-green-800">
+                                                <span className="mr-2 font-bold uppercase">{t('stats.shareButton')}</span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    }
                                 </div>
 
 
